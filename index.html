@@ -4,86 +4,129 @@
 <meta charset="UTF-8">
 <title>AstroVeda</title>
 
+<!-- Temple Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+
 <style>
 
-/* BODY */
+/* ===== COSMIC BACKGROUND ===== */
 
 body{
 margin:0;
-font-family:serif;
-background:linear-gradient(#2b0000,#050505);
-color:#f5d27a;
-text-align:center;
+background:#0B0F2F;
+color:#F8F5E4;
+font-family:"Cormorant Garamond",serif;
+overflow:hidden;
 }
 
-/* INTRO */
+/* moving stars */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:200%;
+height:200%;
+background-image:
+radial-gradient(white 1px, transparent 1px),
+radial-gradient(#ffffff88 1px, transparent 1px);
+background-size:50px 50px,80px 80px;
+animation:stars 60s linear infinite;
+opacity:0.25;
+}
+
+@keyframes stars{
+from{transform:translateY(0)}
+to{transform:translateY(-500px)}
+}
+
+/* ===== INTRO ===== */
 
 #intro{
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:radial-gradient(circle,#3b0000,#000);
-color:#ffd700;
-font-size:52px;
-letter-spacing:4px;
-text-shadow:0 0 25px #b8860b;
+font-family:"Cinzel",serif;
+font-size:50px;
+color:#D4AF37;
+text-shadow:0 0 20px #D4AF37;
 }
 
-/* MAIN PAGE */
+/* ===== MAIN PAGE ===== */
 
 #main{
 display:none;
+text-align:center;
 padding-top:40px;
 }
 
-/* TITLE */
+/* ===== TITLE ===== */
 
 h1{
+font-family:"Cinzel",serif;
 font-size:42px;
-color:#ffd700;
-text-shadow:0 0 20px #b8860b;
-margin-bottom:50px;
+color:#D4AF37;
+text-shadow:0 0 15px rgba(212,175,55,0.8);
+margin-bottom:60px;
 }
 
-/* GRID LAYOUT */
+/* ===== GRID LAYOUT ===== */
 
 .grid{
 display:grid;
-grid-template-columns:180px 180px 180px;
-grid-template-rows:140px 140px 140px;
+grid-template-columns:200px 200px 200px;
+grid-template-rows:150px 150px 150px;
+gap:25px;
 justify-content:center;
-align-items:center;
-gap:20px;
 }
 
-/* BOX STYLE */
+/* ===== CARDS ===== */
 
 .box{
-background:#3b0000;
-border:2px solid #d4af37;
-border-radius:14px;
+
+background:#F5E6C8;
+color:#0B0F2F;
+
+border:2px solid #D4AF37;
+border-radius:12px;
+
 display:flex;
-justify-content:center;
 align-items:center;
-font-size:20px;
+justify-content:center;
+
+font-size:22px;
+font-family:"Cinzel",serif;
+
 cursor:pointer;
-transition:0.3s;
-box-shadow:0 0 10px rgba(212,175,55,0.4);
+
+box-shadow:0 0 15px rgba(212,175,55,0.5);
+
+transition:all .3s;
 }
+
+/* hover glow */
 
 .box:hover{
-background:#d4af37;
-color:#3b0000;
-transform:scale(1.06);
-box-shadow:0 0 20px #d4af37;
+
+transform:scale(1.07);
+
+box-shadow:
+0 0 20px #D4AF37,
+0 0 40px rgba(212,175,55,0.5);
+
+background:#fff2d4;
+
 }
 
-/* POSITIONS */
+/* ===== POSITIONS ===== */
 
 .kundali{grid-column:1;grid-row:1;}
 .panchanga{grid-column:3;grid-row:1;}
+
 .month{grid-column:2;grid-row:2;}
+
 .transit{grid-column:1;grid-row:3;}
 .dasha{grid-column:3;grid-row:3;}
 
@@ -112,7 +155,7 @@ AstroVeda
 
 <div class="box month">Month View</div>
 
-<div class="box transit">Transit (Gochara)</div>
+<div class="box transit">Transit</div>
 
 <div class="box dasha">Dasha</div>
 
@@ -122,11 +165,11 @@ AstroVeda
 
 <script>
 
-/* INTRO TO DASHBOARD */
+/* intro transition */
 
 setTimeout(()=>{
-document.getElementById("intro").style.display="none";
-document.getElementById("main").style.display="block";
+document.getElementById("intro").style.display="none"
+document.getElementById("main").style.display="block"
 },2000)
 
 </script>
