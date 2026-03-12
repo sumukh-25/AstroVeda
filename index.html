@@ -1,34 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>AstroVeda - Basic Astrology App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Link CSS -->
-    <link rel="stylesheet" href="css/style.css">
+<title>AstroVeda</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+margin:0;
+font-family:Georgia;
+background:linear-gradient(#0b0b1f,#200000);
+color:white;
+}
+
+header{
+text-align:center;
+padding:40px;
+background:#4b0000;
+border-bottom:3px solid #d4af37;
+}
+
+header h1{
+font-size:42px;
+color:#d4af37;
+}
+
+header p{
+color:#ffcc66;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+padding:40px;
+}
+
+.card{
+background:#2a0000;
+border:2px solid #d4af37;
+border-radius:15px;
+padding:25px;
+text-align:center;
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+background:#3a0000;
+}
+
+.card h3{
+color:#ffcc66;
+}
+
+button{
+background:#d4af37;
+border:none;
+padding:10px 20px;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#4b0000;
+margin-top:30px;
+}
+
+</style>
+
 </head>
 
 <body>
 
-    <h1>🔮 AstroVeda</h1>
-    <h3>Discover Your Zodiac & Lucky Number</h3>
+<header>
 
-    <div class="form-container">
-        <input type="text" id="name" placeholder="Enter your name">
-        <br><br>
+<h1>🔱 AstroVeda</h1>
+<p>Ancient South Indian Vedic Astrology</p>
 
-        <input type="date" id="dob">
-        <br><br>
+</header>
 
-        <button onclick="calculate()">Get Prediction</button>
-    </div>
+<div class="container">
 
-    <br>
-    <div id="result"></div>
+<div class="card" onclick="location.href='lucky.html'">
+<h3>🔢 Lucky Number</h3>
+<p>Find your numerology number</p>
+<button>Open</button>
+</div>
 
-    <!-- Link JS -->
-    <script src="js/main.js"></script>
+<div class="card">
+<h3>🪐 South Indian Kundali</h3>
+<p>Generate Drik Panchanga birth chart</p>
+<button>Coming Soon</button>
+</div>
+
+<div class="card">
+<h3>🌙 Nakshatra Finder</h3>
+<p>Find your birth star</p>
+<button>Coming Soon</button>
+</div>
+
+<div class="card">
+<h3>📅 Panchang</h3>
+<p>Tithi, Vara, Yoga, Karana</p>
+<button>Coming Soon</button>
+</div>
+
+<div class="card">
+<h3>💎 Gemstone Advice</h3>
+<p>Vedic gemstone suggestions</p>
+<button>Coming Soon</button>
+</div>
+
+<div class="card">
+<h3>❤️ Marriage Matching</h3>
+<p>Kundali compatibility</p>
+<button>Coming Soon</button>
+</div>
+
+</div>
+
+<footer>
+
+Temple Wisdom • AstroVeda
+
+</footer>
 
 </body>
 </html>
