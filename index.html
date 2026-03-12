@@ -23,55 +23,49 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-flex-direction:column;
 background:radial-gradient(circle,#3b0000,#000);
 color:#ffd700;
 font-size:52px;
-letter-spacing:5px;
+letter-spacing:4px;
 text-shadow:0 0 25px #b8860b;
 }
 
-/* MAIN */
+/* MAIN PAGE */
 
 #main{
 display:none;
-padding:40px;
+padding-top:40px;
 }
 
 /* TITLE */
 
 h1{
+font-size:42px;
 color:#ffd700;
 text-shadow:0 0 20px #b8860b;
-margin-bottom:10px;
+margin-bottom:50px;
 }
 
-.subtitle{
-opacity:0.8;
-margin-bottom:45px;
-font-size:18px;
-}
+/* GRID LAYOUT */
 
-/* BOX CONTAINER */
-
-.container{
-display:flex;
-flex-wrap:wrap;
+.grid{
+display:grid;
+grid-template-columns:180px 180px 180px;
+grid-template-rows:140px 140px 140px;
 justify-content:center;
-gap:30px;
+align-items:center;
+gap:20px;
 }
 
-/* FEATURE BOX */
+/* BOX STYLE */
 
 .box{
-width:220px;
-height:120px;
 background:#3b0000;
 border:2px solid #d4af37;
 border-radius:14px;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 font-size:20px;
 cursor:pointer;
 transition:0.3s;
@@ -85,6 +79,14 @@ transform:scale(1.06);
 box-shadow:0 0 20px #d4af37;
 }
 
+/* POSITIONS */
+
+.kundali{grid-column:1;grid-row:1;}
+.panchanga{grid-column:3;grid-row:1;}
+.month{grid-column:2;grid-row:2;}
+.transit{grid-column:1;grid-row:3;}
+.dasha{grid-column:3;grid-row:3;}
+
 </style>
 </head>
 
@@ -93,32 +95,26 @@ box-shadow:0 0 20px #d4af37;
 <!-- INTRO -->
 
 <div id="intro">
-ASTROVEDA
+AstroVeda
 </div>
 
 <!-- MAIN DASHBOARD -->
 
 <div id="main">
 
-<h1>ASTROVEDA</h1>
+<h1>AstroVeda</h1>
 
-<div class="subtitle">
-Vedic Astrology Platform
-</div>
+<div class="grid">
 
-<div class="container">
+<div class="box kundali">Kundali</div>
 
-<div class="box">Kundali</div>
+<div class="box panchanga">Panchanga</div>
 
-<div class="box">Panchanga</div>
+<div class="box month">Month View</div>
 
-<div class="box">Gochara</div>
+<div class="box transit">Transit (Gochara)</div>
 
-<div class="box">Dasha Timeline</div>
-
-<div class="box">Nakshatra</div>
-
-<div class="box">Navamsa</div>
+<div class="box dasha">Dasha</div>
 
 </div>
 
@@ -126,11 +122,11 @@ Vedic Astrology Platform
 
 <script>
 
-/* INTRO → DASHBOARD */
+/* INTRO TO DASHBOARD */
 
 setTimeout(()=>{
-document.getElementById("intro").style.display="none"
-document.getElementById("main").style.display="block"
+document.getElementById("intro").style.display="none";
+document.getElementById("main").style.display="block";
 },2000)
 
 </script>
