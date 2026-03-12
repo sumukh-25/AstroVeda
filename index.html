@@ -2,29 +2,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AstroVeda</title>
+<title>AstroVeda Intro</title>
 
 <style>
 
 body{
 margin:0;
-font-family:serif;
-background:#050510;
-color:white;
-text-align:center;
-overflow-x:hidden;
-}
-
-/* ---------------- INTRO SCREEN ---------------- */
-
-#intro{
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-flex-direction:column;
-background:black;
-position:relative;
+background:radial-gradient(circle,#0b0b2a,#000);
+font-family:serif;
+color:white;
+overflow:hidden;
+}
+
+/* Title */
+
+.title{
+position:absolute;
+top:15%;
+font-size:48px;
+letter-spacing:4px;
+color:gold;
+text-shadow:0 0 20px gold;
 }
 
 /* Sun */
@@ -32,52 +34,57 @@ position:relative;
 .sun{
 width:120px;
 height:120px;
-background:orange;
+background:radial-gradient(circle,orange,yellow);
 border-radius:50%;
 box-shadow:0 0 60px orange;
 position:relative;
 }
 
-/* Navagraha orbit */
+/* Orbit */
 
 .orbit{
-width:260px;
-height:260px;
-border:1px dashed #444;
+width:300px;
+height:300px;
+border:1px solid rgba(255,255,255,0.2);
 border-radius:50%;
 position:absolute;
 display:flex;
 justify-content:center;
 align-items:flex-start;
-animation:spin 15s linear infinite;
+animation:spin 12s linear infinite;
 }
+
+/* Navagraha dots */
 
 .planet{
-width:18px;
-height:18px;
-background:white;
+width:12px;
+height:12px;
 border-radius:50%;
-}
-
-/* bell */
-
-.bell{
-font-size:60px;
-margin-top:40px;
-animation:bellmove 2s infinite;
+background:white;
 }
 
 /* diyas */
 
 .diya{
 position:absolute;
-bottom:20px;
-font-size:40px;
-animation:flicker 2s infinite;
+bottom:40px;
+font-size:42px;
+animation:flicker 1.5s infinite;
 }
 
-.diya.left{ left:20%; }
-.diya.right{ right:20%; }
+.left{left:25%;}
+.right{right:25%;}
+
+/* bell */
+
+.bell{
+position:absolute;
+top:30%;
+font-size:50px;
+animation:swing 2s infinite;
+}
+
+/* Animations */
 
 @keyframes spin{
 from{transform:rotate(0deg);}
@@ -90,82 +97,18 @@ to{transform:rotate(360deg);}
 100%{opacity:1;}
 }
 
-@keyframes bellmove{
+@keyframes swing{
 0%{transform:rotate(0deg);}
-50%{transform:rotate(10deg);}
+50%{transform:rotate(12deg);}
 100%{transform:rotate(0deg);}
 }
 
-/* ---------------- MAIN PAGE ---------------- */
-
-#main{
-display:none;
-padding:30px;
-}
-
-h1{
-color:gold;
-}
-
-/* form */
-
-.form{
-margin-top:20px;
-}
-
-input{
-padding:10px;
-margin:10px;
-background:black;
-border:1px solid gold;
-color:white;
-}
-
-button{
-padding:10px 20px;
-background:gold;
-border:none;
-cursor:pointer;
-}
-
-/* south indian chart */
-
-.chart{
-display:grid;
-grid-template-columns:repeat(4,120px);
-grid-template-rows:repeat(4,120px);
-justify-content:center;
-margin-top:40px;
-}
-
-.cell{
-border:1px solid gold;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-font-size:14px;
-}
-
-.center{
-background:#111;
-border:none;
-}
-
-.rashi{
-color:gold;
-font-size:12px;
-}
-
 </style>
-
 </head>
 
 <body>
 
-<!-- INTRO -->
-
-<div id="intro">
+<div class="title">ASTROVEDA</div>
 
 <div class="sun">
 <div class="orbit">
@@ -177,79 +120,6 @@ font-size:12px;
 
 <div class="diya left">🪔</div>
 <div class="diya right">🪔</div>
-
-</div>
-
-<!-- MAIN ASTROVEDA PAGE -->
-
-<div id="main">
-
-<h1>ASTROVEDA</h1>
-
-<div class="form">
-
-<input type="date">
-<input type="time">
-<input type="text" placeholder="Place">
-
-<button onclick="loadChart()">Generate Kundali</button>
-
-</div>
-
-<!-- SOUTH INDIAN KUNDALI -->
-
-<div class="chart">
-
-<div class="cell"><div class="rashi">Meena</div><div id="meena"></div></div>
-<div class="cell"><div class="rashi">Mesha</div><div id="mesha"></div></div>
-<div class="cell"><div class="rashi">Vrishabha</div><div id="vrishabha"></div></div>
-<div class="cell"><div class="rashi">Mithuna</div><div id="mithuna"></div></div>
-
-<div class="cell"><div class="rashi">Kumbha</div><div id="kumbha"></div></div>
-<div class="center"></div>
-<div class="center"></div>
-<div class="cell"><div class="rashi">Karka</div><div id="karka"></div></div>
-
-<div class="cell"><div class="rashi">Makara</div><div id="makara"></div></div>
-<div class="center"></div>
-<div class="center"></div>
-<div class="cell"><div class="rashi">Simha</div><div id="simha"></div></div>
-
-<div class="cell"><div class="rashi">Dhanu</div><div id="dhanu"></div></div>
-<div class="cell"><div class="rashi">Vrischika</div><div id="vrischika"></div></div>
-<div class="cell"><div class="rashi">Tula</div><div id="tula"></div></div>
-<div class="cell"><div class="rashi">Kanya</div><div id="kanya"></div></div>
-
-</div>
-
-</div>
-
-<script>
-
-/* intro → dashboard */
-
-setTimeout(()=>{
-document.getElementById("intro").style.display="none";
-document.getElementById("main").style.display="block";
-},5000);
-
-/* example planets */
-
-function loadChart(){
-
-document.getElementById("vrishabha").innerHTML="Moon";
-document.getElementById("simha").innerHTML="Sun";
-document.getElementById("karka").innerHTML="Mars";
-document.getElementById("tula").innerHTML="Mercury";
-document.getElementById("dhanu").innerHTML="Jupiter";
-document.getElementById("kanya").innerHTML="Venus";
-document.getElementById("makara").innerHTML="Saturn";
-document.getElementById("mesha").innerHTML="Rahu";
-document.getElementById("vrischika").innerHTML="Ketu";
-
-}
-
-</script>
 
 </body>
 </html>
