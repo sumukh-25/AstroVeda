@@ -4,12 +4,11 @@
 <meta charset="UTF-8">
 <title>AstroVeda</title>
 
-<!-- Temple Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
 <style>
 
-/* ===== COSMIC BACKGROUND ===== */
+/* ===== GLOBAL ===== */
 
 body{
 margin:0;
@@ -19,145 +18,250 @@ font-family:"Cormorant Garamond",serif;
 overflow:hidden;
 }
 
-/* moving stars */
+/* ===== STARS ===== */
 
 body::before{
 content:"";
 position:fixed;
-top:0;
-left:0;
 width:200%;
 height:200%;
 background-image:
-radial-gradient(white 1px, transparent 1px),
-radial-gradient(#ffffff88 1px, transparent 1px);
-background-size:50px 50px,80px 80px;
-animation:stars 60s linear infinite;
-opacity:0.25;
+radial-gradient(white 1px, transparent 1px);
+background-size:60px 60px;
+opacity:.25;
+animation:stars 90s linear infinite;
 }
 
 @keyframes stars{
 from{transform:translateY(0)}
-to{transform:translateY(-500px)}
+to{transform:translateY(-600px)}
 }
 
-/* ===== INTRO ===== */
+/* ===== SOLAR SYSTEM INTRO ===== */
 
 #intro{
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-font-family:"Cinzel",serif;
-font-size:50px;
-color:#D4AF37;
-text-shadow:0 0 20px #D4AF37;
+flex-direction:column;
 }
 
-/* ===== MAIN PAGE ===== */
-
-#main{
-display:none;
-text-align:center;
-padding-top:40px;
+.sun{
+width:120px;
+height:120px;
+background:#D4AF37;
+border-radius:50%;
+box-shadow:0 0 40px #D4AF37;
+position:relative;
 }
 
-/* ===== TITLE ===== */
-
-h1{
-font-family:"Cinzel",serif;
-font-size:42px;
-color:#D4AF37;
-text-shadow:0 0 15px rgba(212,175,55,0.8);
-margin-bottom:60px;
+.orbit{
+position:absolute;
+border:1px solid rgba(255,255,255,.2);
+border-radius:50%;
 }
 
-/* ===== GRID LAYOUT ===== */
-
-.grid{
-display:grid;
-grid-template-columns:200px 200px 200px;
-grid-template-rows:150px 150px 150px;
-gap:25px;
-justify-content:center;
+.planet{
+width:14px;
+height:14px;
+background:white;
+border-radius:50%;
+position:absolute;
+top:-7px;
+left:50%;
+transform:translateX(-50%);
 }
 
-/* ===== CARDS ===== */
+.orbit1{
+width:180px;
+height:180px;
+animation:spin 10s linear infinite;
+}
 
-.box{
+.orbit2{
+width:260px;
+height:260px;
+animation:spin 18s linear infinite;
+}
 
-background:#F5E6C8;
-color:#0B0F2F;
+.orbit3{
+width:340px;
+height:340px;
+animation:spin 26s linear infinite;
+}
 
-border:2px solid #D4AF37;
-border-radius:12px;
+@keyframes spin{
+from{transform:rotate(0deg)}
+to{transform:rotate(360deg)}
+}
 
+/* ===== TEMPLE DOORS ===== */
+
+#doors{
+position:fixed;
+top:0;
+width:100%;
+height:100%;
 display:flex;
-align-items:center;
+z-index:10;
+}
+
+.door{
+width:50%;
+background:#8B0000;
+border:3px solid #D4AF37;
+transition:transform 2s ease;
+}
+
+.left{transform-origin:left;}
+.right{transform-origin:right;}
+
+.open .left{
+transform:rotateY(-90deg);
+}
+
+.open .right{
+transform:rotateY(90deg);
+}
+
+/* ===== BIRTH FORM ===== */
+
+#form{
+display:none;
+height:100vh;
 justify-content:center;
-
-font-size:22px;
+align-items:center;
+flex-direction:column;
 font-family:"Cinzel",serif;
+}
 
+input{
+margin:10px;
+padding:10px;
+font-size:18px;
+border:1px solid gold;
+background:#F5E6C8;
+}
+
+button{
+padding:10px 20px;
+font-size:18px;
+background:#D4AF37;
+border:none;
 cursor:pointer;
-
-box-shadow:0 0 15px rgba(212,175,55,0.5);
-
-transition:all .3s;
 }
 
-/* hover glow */
+/* ===== KUNDALI ===== */
 
-.box:hover{
-
-transform:scale(1.07);
-
-box-shadow:
-0 0 20px #D4AF37,
-0 0 40px rgba(212,175,55,0.5);
-
-background:#fff2d4;
-
+#kundali{
+display:none;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
 }
 
-/* ===== POSITIONS ===== */
+.chart{
+width:320px;
+height:320px;
+border:3px solid gold;
+transform:rotate(45deg);
+position:relative;
+}
 
-.kundali{grid-column:1;grid-row:1;}
-.panchanga{grid-column:3;grid-row:1;}
+.house{
+position:absolute;
+border:1px solid gold;
+width:50%;
+height:50%;
+}
 
-.month{grid-column:2;grid-row:2;}
+.house1{top:0;left:0}
+.house2{top:0;right:0}
+.house3{bottom:0;left:0}
+.house4{bottom:0;right:0}
 
-.transit{grid-column:1;grid-row:3;}
-.dasha{grid-column:3;grid-row:3;}
+/* planets */
+
+.planetIcon{
+position:absolute;
+font-size:18px;
+animation:planetMove 12s linear infinite;
+filter:drop-shadow(0 0 10px gold);
+}
+
+@keyframes planetMove{
+0%{transform:translate(0,0)}
+50%{transform:translate(5px,5px)}
+100%{transform:translate(0,0)}
+}
 
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
+<!-- SOLAR SYSTEM INTRO -->
 
 <div id="intro">
-AstroVeda
+
+<div class="sun">
+
+<div class="orbit orbit1">
+<div class="planet"></div>
 </div>
 
-<!-- MAIN DASHBOARD -->
+<div class="orbit orbit2">
+<div class="planet"></div>
+</div>
 
-<div id="main">
+<div class="orbit orbit3">
+<div class="planet"></div>
+</div>
 
-<h1>AstroVeda</h1>
+</div>
 
-<div class="grid">
+</div>
 
-<div class="box kundali">Kundali</div>
+<!-- TEMPLE DOORS -->
 
-<div class="box panchanga">Panchanga</div>
+<div id="doors">
+<div class="door left"></div>
+<div class="door right"></div>
+</div>
 
-<div class="box month">Month View</div>
+<!-- BIRTH DETAILS -->
 
-<div class="box transit">Transit</div>
+<div id="form">
 
-<div class="box dasha">Dasha</div>
+<h1>Enter Birth Details</h1>
+
+<input type="date">
+<input type="time">
+<input type="text" placeholder="Birth Place">
+
+<button onclick="showKundali()">Generate Kundali</button>
+
+</div>
+
+<!-- KUNDALI -->
+
+<div id="kundali">
+
+<h1>AstroVeda Kundali</h1>
+
+<div class="chart">
+
+<div class="house house1"></div>
+<div class="house house2"></div>
+<div class="house house3"></div>
+<div class="house house4"></div>
+
+<div class="planetIcon" style="top:20px;left:20px;">☉</div>
+<div class="planetIcon" style="top:80px;left:120px;">☽</div>
+<div class="planetIcon" style="top:200px;left:40px;">♂</div>
+<div class="planetIcon" style="top:180px;left:200px;">♃</div>
 
 </div>
 
@@ -165,12 +269,27 @@ AstroVeda
 
 <script>
 
-/* intro transition */
+/* solar intro */
+
+setTimeout(()=>{
+document.getElementById("doors").classList.add("open")
+},2500)
+
+/* show form */
 
 setTimeout(()=>{
 document.getElementById("intro").style.display="none"
-document.getElementById("main").style.display="block"
-},2000)
+document.getElementById("form").style.display="flex"
+},4500)
+
+/* kundali */
+
+function showKundali(){
+
+document.getElementById("form").style.display="none"
+document.getElementById("kundali").style.display="flex"
+
+}
 
 </script>
 
