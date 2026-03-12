@@ -24,26 +24,6 @@ overflow:hidden;
 
 /* subtle cosmic movement */
 
-body::before{
-content:"";
-position:fixed;
-width:200%;
-height:200%;
-
-background-image:
-radial-gradient(white 1px, transparent 2px),
-radial-gradient(rgba(212,175,55,.7) 1px, transparent 1px);
-
-background-size:80px 80px,140px 140px;
-opacity:.30;
-
-animation:spaceMove 90s linear infinite;
-}
-
-@keyframes spaceMove{
-from{transform:translate(0,0)}
-to{transform:translate(-200px,-300px)}
-}
 
  #constellation{
 position:fixed;
