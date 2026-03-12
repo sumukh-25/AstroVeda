@@ -1,125 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>AstroVeda Intro</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AstroVeda - Divine South Indian Astrology</title>
+  <style>
+    @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Sree+Krushnadevaraya&display=swap)');
 
-<style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle at center, #2b1b00 60%, #000);
+      font-family: 'Sree Krushnadevaraya', serif;
+      color: #ffd700;
+      overflow: hidden;
+    }
 
-body{
-margin:0;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:radial-gradient(circle,#0b0b2a,#000);
-font-family:serif;
-color:white;
-overflow:hidden;
-}
+    header {
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      color: #ffcc33;
+      text-shadow: 0 0 10px #ffea96, 0 0 30px #b8860b;
+    }
 
-/* Title */
+    .mandala {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 50px auto;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 204, 100, 0.5);
+      box-shadow: 0 0 30px rgba(255, 200, 100, 0.3);
+      animation: rotate 80s linear infinite;
+    }
 
-.title{
-position:absolute;
-top:15%;
-font-size:48px;
-letter-spacing:4px;
-color:gold;
-text-shadow:0 0 20px gold;
-}
+    .planet {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff5c0, #ffb400);
+      box-shadow: 0 0 20px rgba(255, 200, 100, 0.8);
+      text-align: center;
+      line-height: 80px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
 
-/* Sun */
+    /* Navagraha orbit positioning */
+    .planet:nth-child(1) { top: 0; left: 160px; }
+    .planet:nth-child(2) { top: 40px; right: 0; }
+    .planet:nth-child(3) { bottom: 0; right: 160px; }
+    .planet:nth-child(4) { bottom: 40px; left: 0; }
+    .planet:nth-child(5) { top: 160px; left: 0; }
+    .planet:nth-child(6) { top: 0; right: 160px; }
+    .planet:nth-child(7) { bottom: 160px; right: 0; }
+    .planet:nth-child(8) { bottom: 0; left: 160px; }
+    .planet:nth-child(9) { top: 160px; right: 0; }
 
-.sun{
-width:120px;
-height:120px;
-background:radial-gradient(circle,orange,yellow);
-border-radius:50%;
-box-shadow:0 0 60px orange;
-position:relative;
-}
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
 
-/* Orbit */
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      color: #ffdd99;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
 
-.orbit{
-width:300px;
-height:300px;
-border:1px solid rgba(255,255,255,0.2);
-border-radius:50%;
-position:absolute;
-display:flex;
-justify-content:center;
-align-items:flex-start;
-animation:spin 12s linear infinite;
-}
+    .temple-border {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: repeating-linear-gradient(
+        to right,
+        #c2a13d 0,
+        #d4b65e 10px,
+        #6b4e0d 20px
+      );
+      box-shadow: 0 3px 10px rgba(0,0,0,0.6);
+    }
 
-/* Navagraha dots */
-
-.planet{
-width:12px;
-height:12px;
-border-radius:50%;
-background:white;
-}
-
-/* diyas */
-
-.diya{
-position:absolute;
-bottom:40px;
-font-size:42px;
-animation:flicker 1.5s infinite;
-}
-
-.left{left:25%;}
-.right{right:25%;}
-
-/* bell */
-
-.bell{
-position:absolute;
-top:30%;
-font-size:50px;
-animation:swing 2s infinite;
-}
-
-/* Animations */
-
-@keyframes spin{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
-}
-
-@keyframes flicker{
-0%{opacity:1;}
-50%{opacity:0.6;}
-100%{opacity:1;}
-}
-
-@keyframes swing{
-0%{transform:rotate(0deg);}
-50%{transform:rotate(12deg);}
-100%{transform:rotate(0deg);}
-}
-
-</style>
+    .intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 20px auto;
+      font-size: 1.3rem;
+      line-height: 2rem;
+      color: #ffe7a1;
+      text-shadow: 0 0 5px #a97b2e;
+      padding: 0 20px;
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="title">ASTROVEDA</div>
+  <div class="temple-border"></div>
+  <header>🪔 AstroVeda 🪔</header>
 
-<div class="sun">
-<div class="orbit">
-<div class="planet"></div>
-</div>
-</div>
+  <div class="intro">
+    Discover the sacred science of <strong>South Indian Astrology</strong> — rooted in Vedic wisdom,
+    guided by the Navagrahas, and infused with divine insight.
+  </div>
 
-<div class="bell">🔔</div>
+  <div class="mandala">
+    <div class="planet">☉ Surya</div>
+    <div class="planet">☾ Chandra</div>
+    <div class="planet">♂ Mangala</div>
+    <div class="planet">☿ Budha</div>
+    <div class="planet">♃ Guru</div>
+    <div class="planet">♀ Shukra</div>
+    <div class="planet">♄ Shani</div>
+    <div class="planet">☊ Rahu</div>
+    <div class="planet">☋ Ketu</div>
+  </div>
 
-<div class="diya left">🪔</div>
-<div class="diya right">🪔</div>
+  <footer>🕉️ Om Namo Narayanaya | AstroVeda - Divine South Indian Astrology 🕉️</footer>
 
 </body>
 </html>
