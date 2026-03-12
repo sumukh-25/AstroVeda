@@ -1,128 +1,162 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta charset="UTF-8">
 <title>AstroVeda</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
+/* ---------------- BODY ---------------- */
+
 body{
 margin:0;
-font-family:Georgia;
-background:linear-gradient(#0b0b1f,#200000);
-color:white;
-}
-
-header{
+font-family:serif;
+background:linear-gradient(#2b0000,#070707);
+color:#f5d27a;
 text-align:center;
-padding:40px;
-background:#4b0000;
-border-bottom:3px solid #d4af37;
 }
 
-header h1{
-font-size:42px;
-color:#d4af37;
+/* ---------------- INTRO ---------------- */
+
+#intro{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:radial-gradient(circle,#3b0000,#000);
+color:#ffd700;
+font-size:50px;
+letter-spacing:4px;
 }
 
-header p{
-color:#ffcc66;
+/* ---------------- MAIN ---------------- */
+
+#main{
+display:none;
+padding:30px;
 }
+
+/* ---------------- TITLE ---------------- */
+
+h1{
+color:#ffd700;
+text-shadow:0 0 15px #b8860b;
+margin-bottom:10px;
+}
+
+.subtitle{
+opacity:0.8;
+margin-bottom:40px;
+}
+
+/* ---------------- BOX CONTAINER ---------------- */
 
 .container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-padding:40px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
 }
 
-.card{
-background:#2a0000;
+/* ---------------- FEATURE BOX ---------------- */
+
+.box{
+width:220px;
+height:120px;
+background:#3b0000;
 border:2px solid #d4af37;
-border-radius:15px;
-padding:25px;
-text-align:center;
+border-radius:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+cursor:pointer;
 transition:0.3s;
 }
 
-.card:hover{
-transform:scale(1.05);
-background:#3a0000;
-}
-
-.card h3{
-color:#ffcc66;
-}
-
-button{
+.box:hover{
 background:#d4af37;
-border:none;
-padding:10px 20px;
-border-radius:8px;
-cursor:pointer;
-font-weight:bold;
-}
-
-footer{
-text-align:center;
-padding:20px;
-background:#4b0000;
-margin-top:30px;
+color:#3b0000;
+transform:scale(1.05);
 }
 
 </style>
-
 </head>
 
 <body>
 
-<header>
+<!-- INTRO SCREEN -->
 
-<h1> 🕉
-  AstroVeda </h1>
-<p>Ancient South Indian Vedic Astrology</p>
+<div id="intro">
 
-</header>
+ASTROVEDA
+
+</div>
+
+<!-- MAIN DASHBOARD -->
+
+<div id="main">
+
+<h1>ASTROVEDA</h1>
+
+<div class="subtitle">
+Ancient Vedic Astrology Platform
+</div>
 
 <div class="container">
 
-<div class="card" onclick="location.href='lucky.html'">
-<h3>🔢 Lucky Number</h3>
-<p>Find your numerology number</p>
-<button>Open</button>
+<div class="box">Kundali</div>
+
+<div class="box" id="luckybox">
+Lucky Number: <span id="luckynumber"></span>
 </div>
 
-<div class="card">
-<h3>🪐 Kundali</h3>
-<p>Generate Drik Panchanga birth chart</p>
-<button>Coming Soon</button>
-</div>
+<div class="box">Daily Panchanga</div>
 
+<div class="box">Transit (Gochara)</div>
 
+<div class="box">Dasha Analysis</div>
 
-<div class="card">
-<h3>📅 Panchang</h3>
-<p>Tithi, Vara, Yoga, Karana</p>
-<button>Coming Soon</button>
-</div>
-
-<div class="card">
-<h3>💎 Gemstone Advice</h3>
-<p>Vedic gemstone suggestions</p>
-<button>Coming Soon</button>
-</div>
-
-
+<div class="box">Planet Positions</div>
 
 </div>
 
-<footer>
+</div>
 
-Temple Wisdom • AstroVeda
+<script>
 
-</footer>
+/* ---------- INTRO TRANSITION ---------- */
+
+setTimeout(()=>{
+document.getElementById("intro").style.display="none"
+document.getElementById("main").style.display="block"
+},3000)
+
+/* ---------- DAILY LUCKY NUMBER ---------- */
+
+function luckyNumber(){
+
+let today = new Date()
+
+let sum =
+today.getDate() +
+(today.getMonth()+1) +
+today.getFullYear()
+
+while(sum > 9){
+sum = sum.toString()
+.split('')
+.reduce((a,b)=>Number(a)+Number(b))
+}
+
+document.getElementById("luckynumber").innerText = sum
+
+}
+
+window.onload = luckyNumber
+
+</script>
 
 </body>
 </html>
