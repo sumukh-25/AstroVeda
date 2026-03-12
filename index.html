@@ -12,7 +12,7 @@
 
 body{
 margin:0;
-background:linear-gradient(180deg,#10154A,#1A2370,#10154A);
+background:linear-gradient(180deg,#0B0F2F,#121A4A,#0B0F2F);
 color:#F8F5E4;
 font-family:"Cormorant Garamond",serif;
 height:100vh;
@@ -22,70 +22,41 @@ align-items:center;
 overflow:hidden;
 }
 
-/* ===== RANDOM TWINKLING STARS ===== */
+/* subtle cosmic movement */
 
 body::before{
 content:"";
 position:fixed;
-width:100%;
-height:100%;
-pointer-events:none;
+width:200%;
+height:200%;
 
 background-image:
-radial-gradient(rgba(255,255,255,.9) 2px, transparent 3px),
-radial-gradient(rgba(212,175,55,.8) 2px, transparent 3px);
+radial-gradient(white 1px, transparent 1px),
+radial-gradient(rgba(212,175,55,.7) 1px, transparent 1px);
 
-background-size:180px 220px,260px 300px;
+background-size:80px 80px,140px 140px;
+opacity:.12;
 
-opacity:.35;
-
-animation:twinkle 6s ease-in-out infinite alternate;
+animation:spaceMove 90s linear infinite;
 }
 
-@keyframes twinkle{
-0%{opacity:.25;}
-100%{opacity:.45;}
+@keyframes spaceMove{
+from{transform:translate(0,0)}
+to{transform:translate(-200px,-300px)}
 }
 
 /* ===== FRAME ===== */
 
 #frame{
 width:92%;
-height:90%;
+height:92%;
+border-radius:12px;
+
 display:flex;
 justify-content:center;
-align-items:flex-start;
-padding-top:70px;
+align-items:center;
+
 position:relative;
-}
-
-/* ===== VERTICAL GOLD LINES ===== */
-
-#frame::before,
-#frame::after{
-
-content:"";
-position:absolute;
-top:0;
-bottom:0;
-width:2px;
-background:#D4AF37;
-
-box-shadow:0 0 15px gold;
-
-animation:borderPulse 4s ease-in-out infinite;
-
-}
-
-#frame::before{left:0;}
-#frame::after{right:0;}
-
-@keyframes borderPulse{
-
-0%{opacity:.5;box-shadow:0 0 8px gold;}
-50%{opacity:1;box-shadow:0 0 22px gold;}
-100%{opacity:.5;box-shadow:0 0 8px gold;}
-
 }
 
 /* ===== INTRO ===== */
@@ -127,15 +98,21 @@ animation:sunPulse 4s ease-in-out infinite;
 @keyframes sunPulse{
 
 0%{
-box-shadow:0 0 10px gold,0 0 25px gold;
+box-shadow:
+0 0 10px gold,
+0 0 25px gold;
 }
 
 50%{
-box-shadow:0 0 25px gold,0 0 55px gold;
+box-shadow:
+0 0 25px gold,
+0 0 55px gold;
 }
 
 100%{
-box-shadow:0 0 10px gold,0 0 25px gold;
+box-shadow:
+0 0 10px gold,
+0 0 25px gold;
 }
 
 }
@@ -153,13 +130,13 @@ text-align:center;
 
 h1{
 font-family:"Cinzel",serif;
-font-size:44px;
+font-size:42px;
 color:#D4AF37;
-margin-bottom:6px;
+margin-bottom:5px;
 
 text-shadow:
 0 0 10px #D4AF37,
-0 0 30px rgba(212,175,55,0.7);
+0 0 30px rgba(212,175,55,0.6);
 }
 
 /* SUBTITLE */
@@ -167,49 +144,19 @@ text-shadow:
 .subtitle{
 font-size:18px;
 opacity:.9;
-margin-bottom:28px;
+margin-bottom:20px;
 }
 
-/* ===== ELEGANT DIVIDER ===== */
+/* DIVIDER */
 
 .divider{
-
-width:260px;
-height:1px;
-
-background:linear-gradient(
-90deg,
-transparent,
-#D4AF37,
-#D4AF37,
-transparent
-);
-
-position:relative;
-
-margin-bottom:40px;
-
-box-shadow:0 0 10px rgba(212,175,55,.8);
-
-}
-
-.divider::after{
-
-content:"☉";
-position:absolute;
-
-top:-13px;
-left:50%;
-transform:translateX(-50%);
-
 color:#D4AF37;
-font-size:18px;
-
-text-shadow:0 0 10px gold;
-
+font-size:20px;
+letter-spacing:3px;
+margin-bottom:35px;
 }
 
-/* ===== GRID ===== */
+/* GRID */
 
 .grid{
 display:grid;
@@ -218,7 +165,7 @@ grid-template-rows:140px 140px 140px;
 gap:25px;
 }
 
-/* ===== BOXES ===== */
+/* BOXES */
 
 .box{
 background:#F5E6C8;
@@ -281,7 +228,9 @@ ASTR<span class="sunO"></span>VEDA
 Vedic Astrology Platform
 </div>
 
-<div class="divider"></div>
+<div class="divider">
+✦ ───────── ☉ ───────── ✦
+</div>
 
 <div class="grid">
 
@@ -301,7 +250,12 @@ Vedic Astrology Platform
 
 <script>
 
+/* INTRO → MAIN */
+
 setTimeout(()=>{
+
+document.getElementById("frame").style.border="2px solid #D4AF37"
+document.getElementById("frame").style.boxShadow="0 0 25px rgba(212,175,55,0.6)"
 
 document.getElementById("intro").style.display="none"
 document.getElementById("main").style.display="flex"
