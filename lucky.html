@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Lucky Number | AstroVeda</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0d0d1a;
+color:white;
+text-align:center;
+padding:50px;
+}
+
+input{
+padding:10px;
+font-size:16px;
+margin:10px;
+}
+
+button{
+padding:10px 20px;
+background:#8a2be2;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.result{
+font-size:28px;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🔢 Lucky Number Calculator</h1>
+
+<p>Enter your Date of Birth</p>
+
+<input type="date" id="dob">
+
+<br>
+
+<button onclick="calculate()">Find Lucky Number</button>
+
+<div class="result" id="result"></div>
+
+<script>
+
+function calculate(){
+
+let dob=document.getElementById("dob").value;
+
+if(!dob){
+alert("Enter DOB");
+return;
+}
+
+let numbers=dob.replaceAll("-","").split("");
+
+let sum=0;
+
+numbers.forEach(n=>{
+sum+=parseInt(n);
+});
+
+while(sum>9){
+sum=sum.toString().split("").reduce((a,b)=>parseInt(a)+parseInt(b));
+}
+
+document.getElementById("result").innerHTML="Your Lucky Number: "+sum;
+
+}
+
+</script>
+
+</body>
+</html>
