@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,102 +13,112 @@
 
 body{
 margin:0;
-background:#0B0F2F;
+background:linear-gradient(180deg,#0B0F2F,#121A4A,#0B0F2F);
 color:#F8F5E4;
 font-family:"Cormorant Garamond",serif;
-overflow:hidden;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+overflow:hidden;
 }
 
-/* ===== WEBSITE BORDER FRAME ===== */
+/* subtle cosmic movement */
+
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+
+background-image:
+radial-gradient(white 1px, transparent 1px),
+radial-gradient(rgba(212,175,55,.7) 1px, transparent 1px);
+
+background-size:80px 80px,140px 140px;
+opacity:.12;
+
+animation:spaceMove 90s linear infinite;
+}
+
+@keyframes spaceMove{
+from{transform:translate(0,0)}
+to{transform:translate(-200px,-300px)}
+}
+
+/* ===== FRAME ===== */
 
 #frame{
 width:92%;
 height:92%;
-border:2px solid #D4AF37;
-box-shadow:0 0 25px rgba(212,175,55,0.6);
 border-radius:12px;
+
 display:flex;
 justify-content:center;
 align-items:center;
+
 position:relative;
-overflow:hidden;
 }
 
-/* ===== SOLAR SYSTEM ===== */
+/* ===== INTRO ===== */
 
-#solar{
+#intro{
 position:absolute;
-width:500px;
-height:500px;
 display:flex;
 justify-content:center;
 align-items:center;
-}
-
-/* SUN */
-
-.sun{
-width:70px;
-height:70px;
-background:#D4AF37;
-border-radius:50%;
-box-shadow:0 0 40px gold;
-position:absolute;
-}
-
-/* ORBITS */
-
-.orbit{
-position:absolute;
-border:1px solid rgba(255,255,255,0.2);
-border-radius:50%;
-animation:spin linear infinite;
-}
-
-.orbit div{
-width:10px;
-height:10px;
-background:white;
-border-radius:50%;
-position:absolute;
-top:-5px;
-left:50%;
-transform:translateX(-50%);
-filter:drop-shadow(0 0 6px gold);
-}
-
-/* DIFFERENT ORBITS */
-
-.o1{width:120px;height:120px;animation-duration:8s}
-.o2{width:160px;height:160px;animation-duration:12s}
-.o3{width:200px;height:200px;animation-duration:16s}
-.o4{width:240px;height:240px;animation-duration:20s}
-.o5{width:280px;height:280px;animation-duration:24s}
-.o6{width:320px;height:320px;animation-duration:28s}
-.o7{width:360px;height:360px;animation-duration:32s}
-.o8{width:400px;height:400px;animation-duration:36s}
-.o9{width:440px;height:440px;animation-duration:40s}
-
-@keyframes spin{
-from{transform:rotate(0deg)}
-to{transform:rotate(360deg)}
-}
-
-/* ===== CENTER LOGO ===== */
-
-#logo{
-position:absolute;
 font-family:"Cinzel",serif;
-font-size:48px;
+font-size:60px;
 color:#D4AF37;
-text-shadow:0 0 20px gold;
 }
 
-/* ===== MAIN PAGE ===== */
+/* SUN O */
+
+.sunO{
+
+display:inline-block;
+
+width:38px;
+height:38px;
+
+border-radius:50%;
+
+background:#D4AF37;
+
+margin:0 6px;
+
+box-shadow:
+0 0 15px gold,
+0 0 35px gold,
+0 0 55px rgba(212,175,55,.6);
+
+animation:sunPulse 4s ease-in-out infinite;
+
+}
+
+@keyframes sunPulse{
+
+0%{
+box-shadow:
+0 0 10px gold,
+0 0 25px gold;
+}
+
+50%{
+box-shadow:
+0 0 25px gold,
+0 0 55px gold;
+}
+
+100%{
+box-shadow:
+0 0 10px gold,
+0 0 25px gold;
+}
+
+}
+
+/* ===== MAIN ===== */
 
 #main{
 display:none;
@@ -116,20 +127,37 @@ align-items:center;
 text-align:center;
 }
 
+/* TITLE */
+
 h1{
 font-family:"Cinzel",serif;
 font-size:42px;
 color:#D4AF37;
 margin-bottom:5px;
+
+text-shadow:
+0 0 10px #D4AF37,
+0 0 30px rgba(212,175,55,0.6);
 }
+
+/* SUBTITLE */
 
 .subtitle{
 font-size:18px;
-opacity:0.85;
-margin-bottom:40px;
+opacity:.9;
+margin-bottom:20px;
 }
 
-/* ===== GRID ===== */
+/* DIVIDER */
+
+.divider{
+color:#D4AF37;
+font-size:20px;
+letter-spacing:3px;
+margin-bottom:35px;
+}
+
+/* GRID */
 
 .grid{
 display:grid;
@@ -138,21 +166,27 @@ grid-template-rows:140px 140px 140px;
 gap:25px;
 }
 
-/* ===== BOXES ===== */
+/* BOXES */
 
 .box{
 background:#F5E6C8;
 color:#0B0F2F;
+
 border:2px solid #D4AF37;
 border-radius:10px;
+
 display:flex;
 justify-content:center;
 align-items:center;
+
 font-family:"Cinzel",serif;
 font-size:20px;
+
 cursor:pointer;
+
 box-shadow:0 0 12px rgba(212,175,55,0.5);
-transition:0.3s;
+
+transition:.3s;
 }
 
 .box:hover{
@@ -177,32 +211,27 @@ box-shadow:0 0 25px gold;
 
 <div id="frame">
 
-<!-- SOLAR SYSTEM INTRO -->
+<!-- INTRO -->
 
-<div id="solar">
+<div id="intro">
 
-<div class="sun"></div>
-
-<div class="orbit o1"><div></div></div>
-<div class="orbit o2"><div></div></div>
-<div class="orbit o3"><div></div></div>
-<div class="orbit o4"><div></div></div>
-<div class="orbit o5"><div></div></div>
-<div class="orbit o6"><div></div></div>
-<div class="orbit o7"><div></div></div>
-<div class="orbit o8"><div></div></div>
-<div class="orbit o9"><div></div></div>
+ASTR<span class="sunO"></span>VEDA
 
 </div>
-
-<div id="logo">AstroVeda</div>
 
 <!-- MAIN PAGE -->
 
 <div id="main">
 
 <h1>AstroVeda</h1>
-<div class="subtitle">Vedic Astrology Platform</div>
+
+<div class="subtitle">
+Vedic Astrology Platform
+</div>
+
+<div class="divider">
+✦ ───────── ☉ ───────── ✦
+</div>
 
 <div class="grid">
 
@@ -222,16 +251,19 @@ box-shadow:0 0 25px gold;
 
 <script>
 
-/* intro duration */
+/* INTRO → MAIN */
 
 setTimeout(()=>{
-document.getElementById("solar").style.display="none"
-document.getElementById("logo").style.display="none"
+
+document.getElementById("frame").style.border="2px solid #D4AF37"
+document.getElementById("frame").style.boxShadow="0 0 25px rgba(212,175,55,0.6)"
+
+document.getElementById("intro").style.display="none"
 document.getElementById("main").style.display="flex"
+
 },3000)
 
 </script>
 
 </body>
 </html>
-
